@@ -38,26 +38,27 @@ const Home = () => {
   if (!user) return <div>Loading...</div>;
 
   return (
-    <Card className="mx-auto max-w-auto p-4 mt-10">
+    <Card className="mx-auto max-w-auto p-4 m-20">
       <CardHeader>
         <CardTitle className="text-7xl">Welcome, {user.username}</CardTitle>
       </CardHeader>
       <CardContent>
+        <CardTitle className="text-3xl">:: Personal Information ::</CardTitle>
         <div className="space-y-2">
-          <Label className="text-2xl">Email: {user.email}</Label>
+          <Label className="text-1xl">Email: {user.email}</Label>
         </div>
         <div className="space-y-2">
-          <Label className="text-2xl">
-            First Name: {user.personalInfo?.firstName}
+          <Label className="text-1xl">
+            Firstname: {user.personalInfo?.firstName}
           </Label>
         </div>
         <div className="space-y-2">
-          <Label className="text-2xl">
-            Last Name: {user.personalInfo?.lastName}
+          <Label className="text-1xl">
+            Lastname: {user.personalInfo?.lastName}
           </Label>
         </div>
         <div className="space-y-2">
-          <Label className="text-2xl">
+          <Label className="text-1xl">
             Date of Birth:{" "}
             {user.personalInfo?.dateOfBirth
               ? formatDate(user.personalInfo.dateOfBirth)

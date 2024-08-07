@@ -48,7 +48,7 @@ const Login = () => {
   };
 
   return (
-    <Card className="mx-auto max-w-md">
+    <Card className="mx-auto max-w-lg p-4 mt-10 mb-10">
       <CardHeader>
         <CardTitle className="text-2xl">Login</CardTitle>
         <CardDescription>

@@ -205,15 +205,31 @@ const Register = () => {
       alert("User registered successfully!");
       navigate("/login"); // Redirect to login page after successful registration
     } catch (error) {
-      console.error(
-        "There was an error!",
-        error.response ? error.response.data : error.message
-      );
+      if (error.response && error.response.status === 400) {
+        const errorMessage = error.response.data.message;
+        if (errorMessage === "Username already exists") {
+          alert(
+            "The username is already taken. Please choose a different one."
+          );
+        } else if (errorMessage === "Email already exists") {
+          alert(
+            "The email is already registered. Please use a different email."
+          );
+        } else {
+          alert("Registration failed. Please try again.");
+        }
+      } else {
+        console.error(
+          "There was an error!",
+          error.response ? error.response.data : error.message
+        );
+        alert("An unexpected error occurred. Please try again.");
+      }
     }
   };
 
   return (
-    <Card className="mx-auto max-w-md">
+    <Card className="mx-auto max-w-lg p-4 mt-10 mb-10">
       <CardHeader>
         <CardTitle className="text-3xl">Register</CardTitle>
         <CardDescription>

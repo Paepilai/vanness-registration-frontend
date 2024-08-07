@@ -13,13 +13,13 @@ const LandingPage = () => {
       </CardHeader>
       <CardContent className="space-y-4">
         <Button className="w-full">
-          <Link to="/login" className="w-full text-center">
-            Login
+          <Link to="/register" className="w-full text-center">
+            Register
           </Link>
         </Button>
         <Button className="w-full">
-          <Link to="/register" className="w-full text-center">
-            Register
+          <Link to="/login" className="w-full text-center">
+            Login
           </Link>
         </Button>
       </CardContent>
