@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+//import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
@@ -12,6 +12,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import api from "@/api/api";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -33,7 +34,7 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_URL}/api/users/login`, formData);
+      const response = await api.post(`${API_URL}/api/users/login`, formData);
       console.log(response.data);
       alert("User logged in successfully!");
       localStorage.setItem("token", response.data.token);

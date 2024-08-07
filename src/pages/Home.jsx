@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+//import axios from "axios";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+
+import api from "@/api/api";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -13,7 +15,7 @@ const Home = () => {
       const token = localStorage.getItem("token");
       if (token) {
         try {
-          const res = await axios.get(`${API_URL}/api/users/me`, {
+          const res = await api.get(`${API_URL}/api/users/me`, {
             headers: { "x-auth-token": token },
           });
           setUser(res.data);

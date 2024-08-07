@@ -143,7 +143,7 @@
 /////////
 
 import React, { useState } from "react";
-import axios from "axios";
+//import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
@@ -155,6 +155,8 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+
+import api from "@/api/api";
 
 // const API_URL = process.env.REACT_APP_API_URL;
 const API_URL = import.meta.env.VITE_API_URL;
@@ -195,7 +197,7 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
+      const response = await api.post(
         `${API_URL}/api/users/register`,
         formData
       );
