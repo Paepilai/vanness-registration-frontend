@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-//import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
@@ -31,6 +30,22 @@ const Login = () => {
     });
   };
 
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await api.post(`${API_URL}/api/users/login`, formData);
+  //     console.log(response.data);
+  //     alert("User logged in successfully!");
+  //     localStorage.setItem("token", response.data.token);
+  //     navigate("/home");
+  //   } catch (error) {
+  //     console.error(
+  //       "There was an error!",
+  //       error.response ? error.response.data : error.message
+  //     );
+  //   }
+  // };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -40,10 +55,22 @@ const Login = () => {
       localStorage.setItem("token", response.data.token);
       navigate("/home");
     } catch (error) {
-      console.error(
-        "There was an error!",
-        error.response ? error.response.data : error.message
-      );
+      if (error.response && error.response.status === 400) {
+        const errorMessage = error.response.data.message;
+        if (errorMessage === "Invalid username") {
+          alert("The username is invalid.");
+        } else if (errorMessage === "Invalid password") {
+          alert("The password is invalid.");
+        } else {
+          alert("Login failed. Please try again.");
+        }
+      } else {
+        console.error(
+          "There was an error!",
+          error.response ? error.response.data : error.message
+        );
+        alert("An unexpected error occurred. Please try again.");
+      }
     }
   };
 
