@@ -3,6 +3,8 @@ import axios from "axios";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Home = () => {
   const [user, setUser] = useState(null);
 
@@ -11,7 +13,7 @@ const Home = () => {
       const token = localStorage.getItem("token");
       if (token) {
         try {
-          const res = await axios.get("http://localhost:5000/api/users/me", {
+          const res = await axios.get(`${API_URL}/api/users/me`, {
             headers: { "x-auth-token": token },
           });
           setUser(res.data);

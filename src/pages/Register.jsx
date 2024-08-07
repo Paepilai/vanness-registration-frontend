@@ -156,6 +156,9 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
+// const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Register = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -193,7 +196,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/register",
+        `${API_URL}/api/users/register`,
         formData
       );
       console.log(response.data);

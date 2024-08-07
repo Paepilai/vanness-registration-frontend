@@ -12,6 +12,9 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Login = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -30,10 +33,7 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/users/login",
-        formData
-      );
+      const response = await axios.post(`${API_URL}/api/users/login`, formData);
       console.log(response.data);
       alert("User logged in successfully!");
       localStorage.setItem("token", response.data.token);
